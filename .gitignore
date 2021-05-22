@@ -1,6 +1,7 @@
 *.csv
 covid_lies.xlsx
 .vscode
+stacked.ipynb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
