@@ -5,11 +5,14 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
+from vectorize import vectorize_col
 
 training = pd.read_csv('covid_lies.csv')
+# tweets_vectorized = 
+vectorize_col(training['tweet'])
 test = pd.read_csv('covid_lies.csv')
-training.drop('tweet_id')
-test.drop('tweet_id')
+training.drop('tweet_id',axis = 1)
+test.drop('tweet_id',axis = 1)
 #Training/Test sets
 xtrain = training.drop('label', axis=1)
 ytrain = training.loc[:, 'label']
