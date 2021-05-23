@@ -12,9 +12,10 @@ training = pd.read_csv('covid_lies.csv')
 training.drop('misconception',axis = 1, inplace=True)
 training.drop('tweet_id',axis = 1,inplace = True)
 training['tweet'] = hero.clean(training['tweet'])
-training['tweet'] = (hero.do_tfidf(training['tweet'], max_features=30))
+num_features = 500
+training['tweet'] = (hero.do_tfidf(training['tweet'], max_features=500))
 #expand lists into columns
-tweets_df = pd.DataFrame(training["tweet"].to_list(), columns=['tweet_' + str(x) for x in range(30)])
+tweets_df = pd.DataFrame(training["tweet"].to_list(), columns=['tweet_' + str(x) for x in range(num_features)])
 training.drop('tweet',axis = 1, inplace = True)
 training = pd.concat([training,tweets_df],axis = 1)
 print(training)
