@@ -25,13 +25,14 @@ training = pd.concat([training,tweets_df],axis = 1)
 
 # Encode labels into numeric values
 le = LabelEncoder()
+le.fit(training["label"])
 training["label"] = le.fit_transform(training["label"])
 
 X = training.drop(["label"], axis=1)
 y = training[["label"]]
 y = y.to_numpy().flatten()
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=7) # seed = 7
 
 xgb_model = XGBClassifier(random_state=0, n_jobs=-1, learning_rate=0.1, n_estimators=100, max_depth=3, use_label_encoder=False, eval_metric="mlogloss")
 nb_model = ComplementNB()
@@ -45,8 +46,12 @@ y_pred = model.predict(stack_test)
 
 print(f"Final prediction score: {accuracy_score(y_test, y_pred):.5f}")
 
-mat = confusion_matrix(y_pred, y_test)
-names = np.unique(y_pred)
+# change y_pred back to categorical name
+y_pred_cat = list(le.inverse_transform(y_pred))
+y_test_cat = list(le.inverse_transform(y_test))
+
+mat = confusion_matrix(y_pred_cat, y_test_cat)
+names = np.unique(y_pred_cat)
 sns.heatmap(mat, square=True, annot=True, fmt='d', cbar=False,
             xticklabels=names, yticklabels=names)
 plt.xlabel('Truth')
