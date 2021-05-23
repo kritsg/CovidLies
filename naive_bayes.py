@@ -14,8 +14,8 @@ training.drop('misconception',axis = 1, inplace=True)
 training.drop('tweet_id',axis = 1,inplace = True)
 Y = training['label'] # get the label here
 training['tweet'] = hero.clean(training['tweet'])
-num_features = 500
-training['tweet'] = (hero.do_tfidf(training['tweet'], max_features=500))
+num_features = 5
+training['tweet'] = (hero.do_tfidf(training['tweet'], max_features=num_features))
 #expand lists into columns
 tweets_df = pd.DataFrame(training["tweet"].to_list(), columns=['tweet_' + str(x) for x in range(num_features)])
 training.drop('tweet',axis = 1, inplace = True)

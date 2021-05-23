@@ -4,10 +4,13 @@ from xgboost import XGBClassifier
 from sklearn.naive_bayes import ComplementNB
 from vecstack import stacking
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score,confusion_matrix
 from sklearn.preprocessing import LabelEncoder
+import numpy as np
 import pandas as pd
 import texthero as hero
+import matplotlib.pyplot as plt
+import seaborn as sns; sns.set()
 
 training = pd.read_csv("covid_lies.csv")
 training.drop(["misconception", "tweet_id"], axis=1, inplace=True)
@@ -41,3 +44,11 @@ model = model.fit(stack_train, y_train)
 y_pred = model.predict(stack_test)
 
 print(f"Final prediction score: {accuracy_score(y_test, y_pred):.5f}")
+
+mat = confusion_matrix(y_pred, y_test)
+names = np.unique(y_pred)
+sns.heatmap(mat, square=True, annot=True, fmt='d', cbar=False,
+            xticklabels=names, yticklabels=names)
+plt.xlabel('Truth')
+plt.ylabel('Predicted')
+plt.show()

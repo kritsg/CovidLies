@@ -29,8 +29,8 @@ np_dataset = np.array(dataset)
 Y = np_dataset[:,2] # label column
 
 dataset['tweet'] = hero.clean(dataset['tweet'])
-num_features = 500
-dataset['tweet'] = (hero.do_tfidf(dataset['tweet'], max_features=500))
+num_features = 5
+dataset['tweet'] = (hero.do_tfidf(dataset['tweet'], max_features=num_features))
 #expand lists into columns
 tweets_df = pd.DataFrame(dataset["tweet"].to_list(), columns=['tweet_' + str(x) for x in range(num_features)])
 dataset.drop('tweet',axis = 1, inplace = True)
@@ -47,7 +47,7 @@ Y_num = le.transform(Y)
 # change it back to categorical if needed
 # Y = list(le.inverse_transform(Y_num))
 
-print(list(le.classes_))
+#print(list(le.classes_))
 
 
 # XGBoost -------------------------------------
