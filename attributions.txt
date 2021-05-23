@@ -1,0 +1,23 @@
+"XGBoost Python API Reference." 2020.
+https://xgboost.readthedocs.io/en/latest/python/python_api.html
+
+Brownlee, Jason. “How to Develop Your First XGBoost Model in Python.” Machine Learning Mastery, 19 August 2016,
+https://machinelearningmastery.com/develop-first-xgboost-model-python-scikit-learn/
+
+Prabhakaran, Selva. “How Naive Bayes Algorithm Works? (with Example and Full Code).” ML+, 9 Nov. 2018,
+www.machinelearningplus.com/predictive-modeling/how-naive-bayes-algorithm-works-with-example-and-full-code/#9buildingnaivebayesclassifierinpython.
+
+Frei, Lukas. “Automate Stacking In Python.” Medium, Towards Data Science, 10 Jan. 2019,
+towardsdatascience.com/automate-stacking-in-python-fc3e7834772e.
+
+The New York Times. “Coronavirus in the U.S.: Latest Map and Case Count.” The New York Times, 25 June 2020,
+www.nytimes.com/interactive/2021/us/covid-cases.html.
+
+Chawla, N. V., and G. Karakoulas. “Learning From Labeled And Unlabeled Data: An Empirical Study Across Techniques And Domains.”
+Journal of Artificial Intelligence Research 23 (2005): 331–366. Crossref. Web.
+
+“Complement Naive Bayes (CNB) Algorithm.” GeeksforGeeks, 5 Sept. 2020,
+www.geeksforgeeks.org/complement-naive-bayes-cnb-algorithm/
+
+“Boosting - Overview, Forms, Pros and Cons, Option Trees.” Corporate Finance Institute, 13 Apr. 2021,
+corporatefinanceinstitute.com/resources/knowledge/other/boosting/.
