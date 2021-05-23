@@ -5,14 +5,19 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
-from vectorize import vectorize_col
+import texthero as hero
 
 training = pd.read_csv('covid_lies.csv')
-# tweets_vectorized = 
-vectorize_col(training['tweet'])
-test = pd.read_csv('covid_lies.csv')
-training.drop('tweet_id',axis = 1)
-test.drop('tweet_id',axis = 1)
+training.drop('misconception',axis = 1, inplace=True)
+training.drop('tweet_id',axis = 1,inplace = True)
+training['tweet'] = hero.clean(training['tweet'])
+training['tweet'] = (hero.do_tfidf(training['tweet'], max_features=30))
+#expand lists into columns
+tweets_df = pd.DataFrame(training["tweet"].to_list(), columns=['tweet_' + str(x) for x in range(30)])
+training.drop('tweet',axis = 1, inplace = True)
+training = pd.concat([training,tweets_df],axis = 1)
+print(training)
+test = training.copy()
 #Training/Test sets
 xtrain = training.drop('label', axis=1)
 ytrain = training.loc[:, 'label']
