@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
+#do pip install texthero==1.0.5 NOT pip install texthero 
 import texthero as hero
 
 training = pd.read_csv('covid_lies.csv')
@@ -35,3 +36,4 @@ sns.heatmap(mat, square=True, annot=True, fmt='d', cbar=False,
             xticklabels=names, yticklabels=names)
 plt.xlabel('Truth')
 plt.ylabel('Predicted')
+plt.show()
